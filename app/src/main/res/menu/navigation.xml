@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/feedTab"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/feed"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/venuesTab"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/venues"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/friendsTab"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/friends"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/messagesTab"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/messages"
+        app:showAsAction="always|withText"/>
+</menu>
