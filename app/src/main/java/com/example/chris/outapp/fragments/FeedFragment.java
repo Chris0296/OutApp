@@ -25,6 +25,8 @@ public class FeedFragment extends Fragment {
     GraphRequest friendRequest;
     AccessToken accessToken;
 
+    //my branch
+
     public FeedFragment() {
         // Required empty public constructor
     }
@@ -42,13 +44,13 @@ public class FeedFragment extends Fragment {
 
         accessToken = AccessToken.getCurrentAccessToken();
 
-        friendRequest = new GraphRequest.newMyFriendsRequest(accessToken, new GraphRequest.GraphJSONArrayCallback(){
-
-            @Override
-            public void onCompleted(JSONArray objects, GraphResponse response) {
-
-            }
-        });
+//        friendRequest = new GraphRequest.newMyFriendsRequest(accessToken, new GraphRequest.GraphJSONArrayCallback(){
+//
+//            @Override
+//            public void onCompleted(JSONArray objects, GraphResponse response) {
+//
+//            }
+//        });
 
         GraphRequest graphRequest = new GraphRequest(
                 AccessToken.getCurrentAccessToken(),
@@ -61,7 +63,7 @@ public class FeedFragment extends Fragment {
 
                     }
                 }
-        )
+        );
 
         Profile userProfile = Profile.getCurrentProfile();
         binding.textViewMessage.setText(userProfile.getName());
