@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titleSize">18sp</dimen>
+    <dimen name="subtitleSize">16sp</dimen>
+    <dimen name="timeSize">14sp</dimen>
+</resources>

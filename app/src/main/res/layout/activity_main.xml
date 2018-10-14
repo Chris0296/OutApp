@@ -1,36 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <import type="android.view.View"/>
-    </data>
-    <RelativeLayout
-        android:id="@+id/activity_main"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutUserGoingOut"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.truiton.bottomnavigation.MainActivity">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
 
-        <FrameLayout
-            android:id="@+id/frame_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/navigation"
-            android:animateLayoutChanges="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User who is going out"/>
 
-        </FrameLayout>
-
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigation"
+        <Spinner
+            android:id="@+id/spinnerUserGoingOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
-            app:itemIconTint="@drawable/nav_item_selector"
-            app:itemTextColor="@drawable/nav_item_selector"
-            app:menu="@menu/navigation"
-            app:labelVisibilityMode="labeled"/>
-    </RelativeLayout>
+            android:tooltipText="User"/>
 
-</layout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutVenueGoingTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutUserGoingOut"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Venue they're going to"/>
+
+        <Spinner
+            android:id="@+id/spinnerVenue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tooltipText="Venue"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutVenueGoingTo"
+        android:text="Add"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/buttonFeed"
+        android:layout_below="@id/buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Feed"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/buttonFriend"
+        android:layout_below="@id/buttonFeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Friends"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/buttonVenue"
+        android:layout_below="@id/buttonFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Venues"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/buttonGoUpdate"
+        android:layout_below="@id/buttonVenue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to Update"
+        android:layout_margin="10dp"/>
+
+</RelativeLayout>

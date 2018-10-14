@@ -4,9 +4,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="facebook_app_id">1936570456636172</string>
     <string name="fb_login_protocol_scheme">fb1936570456636172</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="feed">Feed</string>
-    <string name="venues">Venues</string>
-    <string name="friends">Friends</string>
-    <string name="messages">Messages</string>
+
+    <string name="destinations">\u0020destinations</string>
+    <string name="destination">\u0020destination</string>
+    <string name="noDestinations">Not Going Out :(</string>
+
+    <string name="attendees">\u0020attendees</string>
+    <string name="attendee">\u0020attendee</string>
+    <string name="noAttendees">Nobody going here :(</string>
+
+    <!--String to identify how long ago an event occurred-->
+    <string name="seconds">s</string>
+    <string name="minutes">m</string>
+    <string name="hours">h</string>
+    <string name="days">d</string>
+    <string name="weeks">w</string>
+    <string name="years">y</string>
 </resources>
