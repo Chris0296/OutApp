@@ -8,7 +8,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatEditText;
 import android.view.MenuItem;
 
 import com.example.chris.outapp.databinding.ActivityMainBinding;
@@ -16,10 +15,8 @@ import com.example.chris.outapp.fragments.FeedFragment;
 import com.example.chris.outapp.fragments.FriendsFragment;
 import com.example.chris.outapp.fragments.MessagesFragment;
 import com.example.chris.outapp.fragments.VenuesFragment;
-import com.example.chris.outapp.model.VenueAdapter;
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
-import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
