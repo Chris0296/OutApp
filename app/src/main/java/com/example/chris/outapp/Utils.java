@@ -83,5 +83,20 @@ public class Utils {
         return venues;
     }
 
+    public static List<OutGoer> sortOutGoersByTime(List<OutGoer> outGoers){
+        Collections.sort(outGoers, new Comparator<OutGoer>() {
+            @Override
+            public int compare(OutGoer outGoer1, OutGoer outGoer2) {
+                if(outGoer1.getTimeMillis() > outGoer2.getTimeMillis()){
+                    return -1;
+                } else if(outGoer1.getTimeMillis() < outGoer2.getTimeMillis()){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+        return outGoers;
+    }
 
 }

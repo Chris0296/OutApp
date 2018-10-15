@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.chris.outapp.R;
+import com.example.chris.outapp.Utils;
 import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.adapter.OutGoerAdapter;
@@ -66,6 +67,7 @@ public class FeedActivity extends AppCompatActivity {
                     outGoerLiveData.observe(FeedActivity.this, new Observer<List<OutGoer>>() {
                         @Override
                         public void onChanged(@Nullable List<OutGoer> outGoers) {
+                            outGoers = Utils.sortOutGoersByTime(outGoers);
                             outGoerAdapter = new OutGoerAdapter(getApplicationContext(), R.layout.view_feed_item, outGoers);
                             listViewOutGoers.setAdapter(outGoerAdapter);
                         }
