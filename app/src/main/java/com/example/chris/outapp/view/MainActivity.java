@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()){
             case R.id.buttonAdd:
                 //addFriendships();
-                userViewModel.onUserGoingOut(selectedUser, selectedVenue);
-                venueViewModel.onUserGoingOut(selectedUser, selectedVenue);
+                userViewModel.addDestination(selectedUser, selectedVenue);
+                venueViewModel.addAttendee(selectedUser, selectedVenue);
                 outGoerViewModel.onUserGoingOut(selectedUser, selectedVenue);
                 break;
             case R.id.buttonFeed:
@@ -156,11 +156,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         User user3 = new User(reference.push().getKey(), "Rich", null, null);
         User user4 = new User(reference.push().getKey(), "Cian", null, null);
         User user5 = new User(reference.push().getKey(), "Deasy", null, null);
-        reference.child("Users").child(user1.getUserId()).setValue(user1);
-        reference.child("Users").child(user2.getUserId()).setValue(user2);
-        reference.child("Users").child(user3.getUserId()).setValue(user3);
-        reference.child("Users").child(user4.getUserId()).setValue(user4);
-        reference.child("Users").child(user5.getUserId()).setValue(user5);
+        userViewModel.createUser(user1);
+        userViewModel.createUser(user2);
+        userViewModel.createUser(user3);
+        userViewModel.createUser(user4);
+        userViewModel.createUser(user5);
 
         //Create Venues and add to firebase
         Venue venue1 = new Venue(reference.push().getKey(), "Xico", null);
@@ -168,11 +168,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Venue venue3 = new Venue(reference.push().getKey(), "Coppers", null);
         Venue venue4 = new Venue(reference.push().getKey(), "Workmans", null);
         Venue venue5 = new Venue(reference.push().getKey(), "Opium", null);
-        reference.child("Venues").child(venue1.getVenueId()).setValue(venue1);
-        reference.child("Venues").child(venue2.getVenueId()).setValue(venue2);
-        reference.child("Venues").child(venue3.getVenueId()).setValue(venue3);
-        reference.child("Venues").child(venue4.getVenueId()).setValue(venue4);
-        reference.child("Venues").child(venue5.getVenueId()).setValue(venue5);
+        venueViewModel.createVenue(venue1);
+        venueViewModel.createVenue(venue2);
+        venueViewModel.createVenue(venue3);
+        venueViewModel.createVenue(venue4);
+        venueViewModel.createVenue(venue5);
     }
 
     private void populateSpinners() {
@@ -208,10 +208,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void addFriendships(){
-        reference.child("Users").child(selectedUser.getUserId())
-                .child("friends").child(otherSelectedUser.getUserId()).setValue(true);
-
-        reference.child("Users").child(otherSelectedUser.getUserId())
-                .child("friends").child(selectedUser.getUserId()).setValue(true);
+        userViewModel.createFriendship(selectedUser, otherSelectedUser);
     }
 }

@@ -73,12 +73,20 @@ public class UserViewModel extends ViewModel {
         }
     }
 
-    public void onUserGoingOut(User selectedUser, Venue selectedVenue){
+    public void addDestination(User selectedUser, Venue selectedVenue){
         USER_REF.child(selectedUser.getUserId()).child("destinations").child(selectedVenue.getVenueId()).setValue(true);
     }
 
+    public void createUser(User newUser){
+        USER_REF.child(newUser.getUserId()).setValue(newUser);
+    }
 
     public void updateUser(User currentUser, Map<String, Object> newNameMap){
         USER_REF.child(currentUser.getUserId()).updateChildren(newNameMap);
+    }
+
+    public void createFriendship(User user1, User user2){
+        USER_REF.child(user1.getUserId()).child("friends").child(user2.getUserId()).setValue(true);
+        USER_REF.child(user2.getUserId()).child("friends").child(user1.getUserId()).setValue(true);
     }
 }
