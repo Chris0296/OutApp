@@ -3,9 +3,12 @@ package com.example.chris.outapp.view;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,7 +18,9 @@ import com.example.chris.outapp.R;
 import com.example.chris.outapp.Utils;
 import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
+import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.OutGoerAdapter;
+import com.example.chris.outapp.model.adapter.OutGoerRecyclerAdapter;
 import com.example.chris.outapp.model.adapter.UserAdapter;
 import com.example.chris.outapp.viewmodel.OutGoerViewModel;
 import com.example.chris.outapp.viewmodel.UserViewModel;
@@ -28,8 +33,10 @@ public class FeedActivity extends AppCompatActivity {
 
     private Spinner spinnerUserIAm;
     private UserAdapter userAdapter;
-    private OutGoerAdapter outGoerAdapter;
-    private ListView listViewOutGoers;
+
+    private RecyclerView recyclerViewOutGoers;
+    private RecyclerView.Adapter recyclerAdapter;
+    private RecyclerView.LayoutManager recyclerLayoutManager;
 
     private UserViewModel userViewModel;
     private OutGoerViewModel outGoerViewModel;
@@ -40,7 +47,8 @@ public class FeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_experiment);
 
         spinnerUserIAm = findViewById(R.id.spinnerUserIAm);
-        listViewOutGoers = findViewById(R.id.listViewOutGoers);
+        recyclerViewOutGoers = findViewById(R.id.recyclerViewOutGoers);
+        recyclerViewOutGoers.setHasFixedSize(true);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         outGoerViewModel = ViewModelProviders.of(this).get(OutGoerViewModel.class);
@@ -68,8 +76,27 @@ public class FeedActivity extends AppCompatActivity {
                         @Override
                         public void onChanged(@Nullable List<OutGoer> outGoers) {
                             outGoers = Utils.sortOutGoersByTime(outGoers);
-                            outGoerAdapter = new OutGoerAdapter(getApplicationContext(), R.layout.view_feed_item, outGoers);
-                            listViewOutGoers.setAdapter(outGoerAdapter);
+                            recyclerLayoutManager = new LinearLayoutManager(FeedActivity.this);
+                            recyclerViewOutGoers.setLayoutManager(recyclerLayoutManager);
+                            recyclerAdapter = new OutGoerRecyclerAdapter(FeedActivity.this, outGoers, new OnItemClickListener() {
+                                @Override
+                                public void onItemClick(Venue venue) {
+                                    //null
+                                }
+
+                                @Override
+                                public void onItemClick(User friend) {
+                                    //null
+                                }
+
+                                @Override
+                                public void onItemClick(OutGoer outGoer) {
+                                    Intent intent = new Intent(FeedActivity.this, FeedDetailActivity.class);
+                                    intent.putExtra("outGoer", outGoer);
+                                    startActivity(intent);
+                                }
+                            });
+                            recyclerViewOutGoers.setAdapter(recyclerAdapter);
                         }
                     });
                 }

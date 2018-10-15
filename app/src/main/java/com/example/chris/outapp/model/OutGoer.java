@@ -1,6 +1,8 @@
 package com.example.chris.outapp.model;
 
-public class OutGoer {
+import java.io.Serializable;
+
+public class OutGoer implements Serializable {
     private String userId;
     private String userName;
     private String venueId;

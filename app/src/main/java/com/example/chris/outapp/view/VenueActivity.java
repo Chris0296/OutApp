@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.Utils;
+import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.VenueRecyclerAdapter;
@@ -56,6 +57,11 @@ public class VenueActivity extends AppCompatActivity {
 
                         @Override
                         public void onItemClick(User friend) {
+                            //null
+                        }
+
+                        @Override
+                        public void onItemClick(OutGoer outGoer) {
                             //null
                         }
                     });

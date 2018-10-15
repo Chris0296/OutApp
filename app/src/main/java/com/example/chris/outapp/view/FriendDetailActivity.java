@@ -16,7 +16,7 @@ public class FriendDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_detail);
 
-        friendName = findViewById(R.id.friendName);
+        friendName = findViewById(R.id.textViewFriendName);
 
         User friend = (User) getIntent().getSerializableExtra("friend");
         friendName.setText(friend.getUserName());

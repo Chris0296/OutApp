@@ -1,5 +1,6 @@
 package com.example.chris.outapp.view;
 
+import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 
@@ -9,4 +10,5 @@ public interface OnItemClickListener {
 
     void onItemClick(User friend);
 
+    void onItemClick(OutGoer outGoer);
 }

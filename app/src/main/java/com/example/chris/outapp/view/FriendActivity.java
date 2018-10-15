@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.Utils;
+import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.FriendRecyclerAdapter;
@@ -83,6 +84,11 @@ public class FriendActivity extends AppCompatActivity {
                                     Intent intent = new Intent(FriendActivity.this, FriendDetailActivity.class);
                                     intent.putExtra("friend", friend);
                                     startActivity(intent);
+                                }
+
+                                @Override
+                                public void onItemClick(OutGoer outGoer) {
+                                    //null
                                 }
                             });
                             recyclerViewFriends.setAdapter(recyclerAdapter);
