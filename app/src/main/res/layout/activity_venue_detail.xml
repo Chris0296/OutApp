@@ -6,10 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".view.VenueDetailActivity">
 
+    <LinearLayout
+        android:id="@+id/layoutInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User I Am:"/>
+        <Spinner
+            android:id="@+id/spinnerUserThatIAm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Venue Name"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/textViewVenueName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
+
+    <ToggleButton
+        android:id="@+id/tglUserGoingOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewVenueName"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

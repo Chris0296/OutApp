@@ -7,7 +7,7 @@
     tools:context=".view.MainActivity">
 
     <LinearLayout
-        android:id="@+id/layoutUserGoingOut"
+        android:id="@+id/layoutUser1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -16,10 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User who is going out"/>
+            android:text="User 1: "/>
 
         <Spinner
-            android:id="@+id/spinnerUserGoingOut"
+            android:id="@+id/spinnerUser1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:tooltipText="User"/>
@@ -27,20 +27,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutVenueGoingTo"
+        android:id="@+id/layoutUser2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutUserGoingOut"
+        android:layout_below="@+id/layoutUser1"
         android:orientation="vertical"
         android:layout_margin="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Venue they're going to"/>
+            android:text= "User 2: "/>
 
         <Spinner
-            android:id="@+id/spinnerVenue"
+            android:id="@+id/spinnerUser2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:tooltipText="Venue"/>
@@ -51,7 +51,7 @@
         android:id="@+id/buttonAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutVenueGoingTo"
+        android:layout_below="@+id/layoutUser2"
         android:text="Add"
         android:layout_margin="10dp"/>
 

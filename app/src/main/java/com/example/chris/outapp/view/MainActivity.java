@@ -36,8 +36,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Spinner spinnerUserGoingOut;
-    private Spinner spinnerVenue;
+    private Spinner spinnerUser1;
+    private Spinner spinnerUser2;
     private Button buttonAdd;
     private Button buttonFeed;
     private Button buttonFriend;
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinnerUserGoingOut = findViewById(R.id.spinnerUserGoingOut);
-        spinnerVenue = findViewById(R.id.spinnerVenue);
+        spinnerUser1 = findViewById(R.id.spinnerUser1);
+        spinnerUser2 = findViewById(R.id.spinnerUser2);
         buttonAdd = findViewById(R.id.buttonAdd);
         buttonFeed = findViewById(R.id.buttonFeed);
         buttonFriend = findViewById(R.id.buttonFriend);
@@ -91,10 +91,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch(view.getId()){
             case R.id.buttonAdd:
-                //addFriendships();
-                userViewModel.addDestination(selectedUser, selectedVenue);
-                venueViewModel.addAttendee(selectedUser, selectedVenue);
-                outGoerViewModel.onUserGoingOut(selectedUser, selectedVenue);
+                addFriendships();
+//                userViewModel.addDestination(selectedUser, selectedVenue);
+//                venueViewModel.addAttendee(selectedUser, selectedVenue);
+//                outGoerViewModel.onUserGoingOut(selectedUser, selectedVenue);
                 break;
             case R.id.buttonFeed:
                 intent = new Intent(MainActivity.this, FeedActivity.class);
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonVenue.setOnClickListener(this);
         buttonGoUpdate.setOnClickListener(this);
 
-        spinnerUserGoingOut.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerUser1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedUser = userAdapter.getItem(i);
@@ -135,11 +135,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        spinnerVenue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerUser2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedVenue = venueAdapter.getItem(i);
-                //otherSelectedUser = otherUserAdapter.getItem(i);
+                //selectedVenue = venueAdapter.getItem(i);
+                otherSelectedUser = otherUserAdapter.getItem(i);
             }
 
             @Override
@@ -185,26 +185,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onChanged(@Nullable List<User> users) {
                     userAdapter = new UserAdapter(MainActivity.this, R.layout.support_simple_spinner_dropdown_item, users);
                     userAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                    spinnerUserGoingOut.setAdapter(userAdapter);
-//                    otherUserAdapter = new UserAdapter(MainActivity.this, R.layout.support_simple_spinner_dropdown_item, users);
-//                    otherUserAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-//                    spinnerVenue.setAdapter(otherUserAdapter);
+                    spinnerUser1.setAdapter(userAdapter);
+                    otherUserAdapter = new UserAdapter(MainActivity.this, R.layout.support_simple_spinner_dropdown_item, users);
+                    otherUserAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                    spinnerUser2.setAdapter(otherUserAdapter);
                 }
             });
         }
 
-        if(venueViewModel != null){
-            LiveData<List<Venue>> venueLiveData = venueViewModel.getVenueLiveData();
-
-            venueLiveData.observe(this, new Observer<List<Venue>>() {
-                @Override
-                public void onChanged(@Nullable List<Venue> venues) {
-                    venueAdapter = new VenueAdapter(MainActivity.this, R.layout.support_simple_spinner_dropdown_item, venues);
-                    venueAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                    spinnerVenue.setAdapter(venueAdapter);
-                }
-            });
-        }
+//        if(venueViewModel != null){
+//            LiveData<List<Venue>> venueLiveData = venueViewModel.getVenueLiveData();
+//
+//            venueLiveData.observe(this, new Observer<List<Venue>>() {
+//                @Override
+//                public void onChanged(@Nullable List<Venue> venues) {
+//                    venueAdapter = new VenueAdapter(MainActivity.this, R.layout.support_simple_spinner_dropdown_item, venues);
+//                    venueAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+//                    spinnerVenue.setAdapter(venueAdapter);
+//                }
+//            });
+//        }
     }
 
     private void addFriendships(){

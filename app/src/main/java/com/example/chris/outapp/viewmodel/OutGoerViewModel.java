@@ -73,12 +73,18 @@ public class OutGoerViewModel extends ViewModel {
         return idList;
     }
 
-    public void onUserGoingOut(User selectedUser, Venue selectedVenue){
+    public void createOutGoer(User selectedUser, Venue selectedVenue){
         final OutGoer outGoer = new OutGoer(selectedUser.getUserId(), selectedUser.getUserName(), selectedVenue.getVenueId(),
                 selectedVenue.getVenueName(), System.currentTimeMillis());
 
-        for(String friendKey: selectedUser.getFriends().keySet()){
-            OUTGOER_REF.child(friendKey).child(selectedUser.getUserId()).child(selectedVenue.getVenueId()).setValue(outGoer);
+        for(String friendId: selectedUser.getFriends().keySet()){
+            OUTGOER_REF.child(friendId).child(selectedUser.getUserId()).child(selectedVenue.getVenueId()).setValue(outGoer);
+        }
+    }
+
+    public void deleteOutGoer(User selectedUser, Venue selectedVenue){
+        for(String friendId: selectedUser.getFriends().keySet()){
+            OUTGOER_REF.child(friendId).child(selectedUser.getUserId()).child(selectedVenue.getVenueId()).removeValue();
         }
     }
 

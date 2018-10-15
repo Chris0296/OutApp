@@ -49,6 +49,10 @@ public class VenueViewModel extends ViewModel {
         VENUE_REF.child(newVenue.getVenueId()).setValue(newVenue);
     }
 
+    public void removeAttendee(User selectedUser, Venue selectedVenue){
+        VENUE_REF.child(selectedVenue.getVenueId()).child("attendees").child(selectedUser.getUserId()).removeValue();
+    }
+
     public void updateVenue(Venue currentVenue, Map<String, Object> newNameMap){
         VENUE_REF.child(currentVenue.getVenueId()).updateChildren(newNameMap);
     }

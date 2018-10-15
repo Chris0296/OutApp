@@ -81,6 +81,10 @@ public class UserViewModel extends ViewModel {
         USER_REF.child(newUser.getUserId()).setValue(newUser);
     }
 
+    public void removeDestination(User selectedUser, Venue selectedVenue){
+        USER_REF.child(selectedUser.getUserId()).child("destinations").child(selectedVenue.getVenueId()).removeValue();
+    }
+
     public void updateUser(User currentUser, Map<String, Object> newNameMap){
         USER_REF.child(currentUser.getUserId()).updateChildren(newNameMap);
     }
