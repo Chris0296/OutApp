@@ -50,8 +50,6 @@ public class VenueDetailActivity extends AppCompatActivity {
         spinnerCurrentUser = findViewById(R.id.spinnerUserThatIAm);
         textViewVenueName = findViewById(R.id.textViewVenueName);
         tglUserGoingOut = findViewById(R.id.tglUserGoingOut);
-        tglUserGoingOut.setTextOff("Not Going");
-        tglUserGoingOut.setTextOn("Going");
 
         Intent intent = getIntent();
         Venue chosenVenue = (Venue) intent.getSerializableExtra("venue");
