@@ -1,13 +1,16 @@
-package com.example.chris.outapp.view;
+package com.example.chris.outapp.view.fragment;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
@@ -24,49 +27,47 @@ import com.example.chris.outapp.viewmodel.VenueViewModel;
 
 import java.util.List;
 
-public class VenueDetailActivity extends AppCompatActivity {
-
+public class VenueDetailFragment extends Fragment {
     private Spinner spinnerCurrentUser;
     private TextView textViewVenueName;
     private ToggleButton tglUserGoingOut;
-
     private UserViewModel userViewModel;
     private VenueViewModel venueViewModel;
     private OutGoerViewModel outGoerViewModel;
-
     private UserAdapter userAdapter;
-
     private User currentUser;
-
+    public VenueDetailFragment() {
+        // Required empty public constructor
+    }
+    public static VenueDetailFragment newInstance(){
+        return new VenueDetailFragment();
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_venue_detail);
-
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View fragmentView = inflater.inflate(R.layout.fragment_venue_detail, container, false);
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         venueViewModel = ViewModelProviders.of(this).get(VenueViewModel.class);
         outGoerViewModel = ViewModelProviders.of(this).get(OutGoerViewModel.class);
-
-        spinnerCurrentUser = findViewById(R.id.spinnerUserThatIAm);
-        textViewVenueName = findViewById(R.id.textViewVenueName);
-        tglUserGoingOut = findViewById(R.id.tglUserGoingOut);
-
-        Intent intent = getIntent();
-        Venue chosenVenue = (Venue) intent.getSerializableExtra("venue");
+        spinnerCurrentUser = fragmentView.findViewById(R.id.spinnerUserThatIAm);
+        textViewVenueName = fragmentView.findViewById(R.id.textViewVenueName);
+        tglUserGoingOut = fragmentView.findViewById(R.id.tglUserGoingOut);
+        Venue chosenVenue = (Venue) getArguments().getSerializable("venue");
         textViewVenueName.setText(chosenVenue.getVenueName());
-
         if(userViewModel != null){
             LiveData<List<User>> userLiveData = userViewModel.getUserLiveData();
             userLiveData.observe(this, new Observer<List<User>>() {
                 @Override
                 public void onChanged(@Nullable List<User> users) {
-                    userAdapter = new UserAdapter(VenueDetailActivity.this, R.layout.support_simple_spinner_dropdown_item, users);
+                    userAdapter = new UserAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, users);
                     userAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     spinnerCurrentUser.setAdapter(userAdapter);
                 }
             });
         }
-
         spinnerCurrentUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -104,6 +105,6 @@ public class VenueDetailActivity extends AppCompatActivity {
                 }
             }
         });
-
+        return fragmentView;
     }
 }

@@ -28,13 +28,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity" />
-        <activity android:name=".view.UpdateActivity" />
-        <activity android:name=".view.FeedActivity" />
-        <activity android:name=".view.VenueActivity" />
-        <activity android:name=".view.VenueDetailActivity" />
-        <activity android:name=".view.FriendActivity" />
-        <activity android:name=".view.FriendDetailActivity" />
-        <activity android:name=".view.FeedDetailActivity"/>
     </application>
 
 </manifest>

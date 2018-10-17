@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--<item
+    <item
         android:id="@+id/feedTab"
         android:icon="@drawable/ic_launcher_background"
         android:title="@string/feed"
@@ -17,8 +17,13 @@
         android:title="@string/friends"
         app:showAsAction="always|withText"/>
     <item
-        android:id="@+id/messagesTab"
+        android:id="@+id/goingOutTab"
         android:icon="@drawable/ic_launcher_background"
-        android:title="@string/messages"
-        app:showAsAction="always|withText"/>-->
+        android:title="@string/going_out"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/updateTab"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/update"
+        app:showAsAction="always|withText"/>
 </menu>

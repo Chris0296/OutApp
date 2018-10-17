@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FeedActivity">
-
+    tools:context=".view.fragment.VenueDetailFragment">
     <LinearLayout
         android:id="@+id/layoutInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="20dp">
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="User I Am:"/>
-
         <Spinner
-            android:id="@+id/spinnerUserIAm"
+            android:id="@+id/spinnerUserThatIAm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </LinearLayout>
-
-    <View
-        android:id="@+id/viewDivider"
-        android:layout_below="@+id/layoutInput"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary"
-        />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewOutGoers"
-        android:layout_below="@+id/viewDivider"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewVenueName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"/>
-
+        android:layout_centerInParent="true"
+        tools:text="venue name"
+        android:layout_marginBottom="20dp"/>
+    <ToggleButton
+        android:id="@+id/tglUserGoingOut"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textViewVenueName"
+        android:layout_centerHorizontal="true"
+        android:textOn=""
+        android:textOff=""
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:background="@drawable/toggle_selector"/>
 </RelativeLayout>

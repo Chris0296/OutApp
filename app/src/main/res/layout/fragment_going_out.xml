@@ -1,53 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.UpdateActivity">
-
+    tools:context=".view.fragment.GoingOutFragment">
     <LinearLayout
-        android:id="@+id/layoutUser"
+        android:id="@+id/layoutUser1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:layout_margin="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User I am"
-            android:singleLine="false"/>
-
+            android:text="User 1:"/>
         <Spinner
-            android:id="@+id/spinnerWhoAmI"
+            android:id="@+id/spinnerUser1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:tooltipText="User"/>
     </LinearLayout>
-
     <LinearLayout
-        android:id="@+id/layoutEdit"
-        android:layout_below="@+id/layoutUser"
+        android:id="@+id/layoutUser2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:layout_below="@+id/layoutUser1"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Name:"/>
-
-        <EditText
-            android:id="@+id/editTextNewName"
+            android:text="User 2:"/>
+        <Spinner
+            android:id="@+id/spinnerUser2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:tooltipText="Venue"/>
     </LinearLayout>
-
     <Button
-        android:layout_below="@id/layoutEdit"
-        android:id="@+id/buttonUpdate"
+        android:id="@+id/buttonAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Name"/>
+        android:layout_below="@+id/layoutUser2"
+        android:text="Add"
+        android:layout_margin="5dp"/>
 </RelativeLayout>
