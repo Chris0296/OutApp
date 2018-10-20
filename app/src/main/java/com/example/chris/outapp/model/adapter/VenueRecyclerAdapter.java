@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.chris.outapp.MainApplication;
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.view.OnItemClickListener;
@@ -64,13 +65,33 @@ public class VenueRecyclerAdapter extends RecyclerView.Adapter<VenueRecyclerAdap
     public void onBindViewHolder(@NonNull VenueViewHolder venueViewHolder, int i) {
         venueViewHolder.bind(venueList.get(i), listener);
         venueViewHolder.textViewName.setText(venueList.get(i).getVenueName());
+        int numFriends = 0;
         if(venueList.get(i).getAttendees() != null){
-            if(venueList.get(i).getAttendees().size() == 1){
-                venueViewHolder.textViewNumAttendees.setText(
-                        venueList.get(i).getAttendees().size() + context.getString(R.string.attendee));
+            for(String attendeeId: venueList.get(i).getAttendees().keySet()){
+                if(MainApplication.getCurrentUser().getFriends() != null){
+                    for(String friendId: MainApplication.getCurrentUser().getFriends().keySet()){
+                        if(attendeeId.equals(friendId)){
+                            numFriends++;
+                        }
+                    }
+                }
+            }
+            String attendeeOrPlural = venueList.get(i).getAttendees().size() == 1 ?
+                    context.getString(R.string.attendee) : context.getString(R.string.attendees);
+
+            String friendOrPlural = numFriends == 1 ?
+                    context.getString(R.string.friendGoingOut) : context.getString(R.string.friendsGoingOut);
+
+            String otherOrPlural = (venueList.get(i).getAttendees().size() - numFriends > 1) ?
+                    context.getString(R.string.others) : context.getString(R.string.other);
+
+            if(numFriends == venueList.get(i).getAttendees().size()){
+                venueViewHolder.textViewNumAttendees.setText(numFriends + friendOrPlural);
+            } else if(numFriends == 0){
+                venueViewHolder.textViewNumAttendees.setText(venueList.get(i).getAttendees().size() + attendeeOrPlural);
             } else {
-                venueViewHolder.textViewNumAttendees.setText(
-                        venueList.get(i).getAttendees().size() + context.getString(R.string.attendees));
+                venueViewHolder.textViewNumAttendees.setText(numFriends + friendOrPlural +
+                        " and " + (venueList.get(i).getAttendees().size() - numFriends) + otherOrPlural);
             }
         } else {
             venueViewHolder.textViewNumAttendees.setText(R.string.noAttendees);

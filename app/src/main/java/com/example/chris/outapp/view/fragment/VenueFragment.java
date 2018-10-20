@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.chris.outapp.MainApplication;
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.Utils;
 import com.example.chris.outapp.model.OutGoer;
@@ -57,7 +58,7 @@ public class VenueFragment extends Fragment {
             venueLiveData.observe(VenueFragment.this, new Observer<List<Venue>>() {
                 @Override
                 public void onChanged(@Nullable List<Venue> venues) {
-                    venues = Utils.sortVenuesByAttendees(venues);
+                    venues = Utils.sortVenuesByAttendees(venues, MainApplication.getCurrentUser());
                     recyclerManager = new LinearLayoutManager(getContext());
                     recyclerViewVenues.setLayoutManager(recyclerManager);
                     recyclerAdapter = new VenueRecyclerAdapter(getContext(), venues, new OnItemClickListener() {

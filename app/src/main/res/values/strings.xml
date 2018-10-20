@@ -29,4 +29,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile">Profile</string>
+    <string name="friendGoingOut">\u0020friend</string>
+    <string name="friendsGoingOut">\u0020friends</string>
+    <string name="others">\u0020others</string>
+    <string name="other">\u0020other</string>
 </resources>

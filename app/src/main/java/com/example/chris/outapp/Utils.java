@@ -60,7 +60,7 @@ public class Utils {
         return friends;
     }
 
-    public static List<Venue> sortVenuesByAttendees(List<Venue> venues){
+    public static List<Venue> sortVenuesByAttendees(List<Venue> venues, User currentUser){
         Collections.sort(venues, new Comparator<Venue>() {
             @Override
             public int compare(Venue venue1, Venue venue2) {
@@ -98,5 +98,78 @@ public class Utils {
         });
         return outGoers;
     }
-
+//
+//    public static List<Venue> sortVenues(List<Venue> venues, User currentUser) {
+//        List<Venue> venuesWithFriends = new ArrayList<>();
+//        List<Venue> venuesWithoutFriends = venues;
+//
+//        for(Venue ven: venues){
+//            if(ven.getAttendees() != null){
+//                for(String attendeeId: ven.getAttendees().keySet()){
+//                    for(String friendId: currentUser.getFriends().keySet()){
+//                        if(attendeeId.equals(friendId)){
+//                            venuesWithFriends.add(ven);
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        for(Venue ven: venuesWithoutFriends){
+//            for(Venue venWF: venuesWithFriends){
+//                if(ven.equals(venWF)){
+//                        venuesWithoutFriends.remove(venWF);
+//                }
+//            }
+//        }
+//
+//        Collections.sort(venuesWithFriends, new Comparator<Venue>() {
+//            @Override
+//            public int compare(Venue venue1, Venue venue2) {
+//
+//                int venue1FriendCount = 0;
+//                int venue2FriendCount = 0;
+//
+//                for(String attendeeId: venue1.getAttendees().keySet()){
+//                    for(String friendId: currentUser.getFriends().keySet()){
+//                        if(attendeeId.equals(friendId)){
+//                            venue1FriendCount++;
+//                        }
+//                    }
+//                }
+//
+//                for(String attendeeId: venue2.getAttendees().keySet()){
+//                    for(String friendId: currentUser.getFriends().keySet()){
+//                        if(attendeeId.equals(friendId)){
+//                            venue2FriendCount++;
+//                        }
+//                    }
+//                }
+//
+//                if(venue1FriendCount > venue2FriendCount){
+//                    return -1;
+//                } else if (venue1FriendCount < venue2FriendCount){
+//                    return 1;
+//                } else {
+//                    return 0;
+//                }
+//            }
+//        });
+//
+//        Collections.sort(venuesWithoutFriends, new Comparator<Venue>() {
+//            @Override
+//            public int compare(Venue venue1, Venue venue2) {
+//                if(venue1.getAttendees().size() > venue2.getAttendees().size()){
+//                    return -1;
+//                } else if (venue1.getAttendees().size() < venue2.getAttendees().size()){
+//                    return 1;
+//                } else {
+//                    return 0;
+//                }
+//            }
+//        });
+//
+//        venuesWithFriends.addAll(venuesWithoutFriends);
+//        return venuesWithFriends;
+//    }
 }
