@@ -109,6 +109,9 @@ public class VenueDetailFragment extends Fragment {
                 }
             }
         });
+
+        ((MainActivity) getActivity()).setActionBarTitle(chosenVenue.getVenueName());
+
         return fragmentView;
     }
 }

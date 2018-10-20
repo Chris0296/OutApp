@@ -131,6 +131,9 @@ public class MainActivity extends AppCompatActivity{
     public void setActionBarTitle(int stringId){
         getSupportActionBar().setTitle(stringId);
     }
+
+    public void setActionBarTitle(String string) {getSupportActionBar().setTitle(string);}
+
     public void setDisplayHomeAsUpEnabled(Boolean val){
         getSupportActionBar().setDisplayHomeAsUpEnabled(val);
     }
