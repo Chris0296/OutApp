@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.adapter.UserAdapter;
+import com.example.chris.outapp.view.MainActivity;
 import com.example.chris.outapp.viewmodel.OutGoerViewModel;
 import com.example.chris.outapp.viewmodel.UserViewModel;
 
@@ -47,6 +48,10 @@ public class UpdateFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_update, container, false);
+
+        ((MainActivity) getActivity()).setActionBarTitle(R.string.update);
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(false);
+
         spinnerUserIAm = fragmentView.findViewById(R.id.spinnerWhoAmI);
         editTextNewName = fragmentView.findViewById(R.id.editTextNewName);
         buttonUpdate = fragmentView.findViewById(R.id.buttonUpdate);

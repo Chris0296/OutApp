@@ -21,6 +21,7 @@ import com.example.chris.outapp.R;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.UserAdapter;
+import com.example.chris.outapp.view.MainActivity;
 import com.example.chris.outapp.viewmodel.OutGoerViewModel;
 import com.example.chris.outapp.viewmodel.UserViewModel;
 import com.example.chris.outapp.viewmodel.VenueViewModel;
@@ -49,6 +50,9 @@ public class VenueDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_venue_detail, container, false);
+
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(true);
+
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         venueViewModel = ViewModelProviders.of(this).get(VenueViewModel.class);
         outGoerViewModel = ViewModelProviders.of(this).get(OutGoerViewModel.class);

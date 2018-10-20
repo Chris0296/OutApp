@@ -100,34 +100,6 @@ public class MainActivity extends AppCompatActivity{
         fragmentTransaction.commit();
 
         //createUsersAndVenues();
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Fragment selectedFragment = null;
-                switch (menuItem.getItemId()){
-                    case R.id.feedTab :
-                        selectedFragment = FeedFragment.newInstance();
-                        break;
-                    case R.id.venuesTab :
-                        selectedFragment = VenueFragment.newInstance();
-                        break;
-                    case R.id.friendsTab :
-                        selectedFragment = FriendFragment.newInstance();
-                        break;
-                    case R.id.goingOutTab :
-                        selectedFragment = GoingOutFragment.newInstance();
-                        break;
-                    case R.id.updateTab :
-                        selectedFragment = UpdateFragment.newInstance();
-                        break;
-                }
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(frameLayoutContainer.getId(), selectedFragment);
-                fragmentTransaction.commit();
-                return true;
-            }
-        });
     }
 
     private void createUsersAndVenues() {
@@ -154,5 +126,19 @@ public class MainActivity extends AppCompatActivity{
         venueViewModel.createVenue(venue3);
         venueViewModel.createVenue(venue4);
         venueViewModel.createVenue(venue5);
+    }
+
+    public void setActionBarTitle(int stringId){
+        getSupportActionBar().setTitle(stringId);
+    }
+    public void setDisplayHomeAsUpEnabled(Boolean val){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(val);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
