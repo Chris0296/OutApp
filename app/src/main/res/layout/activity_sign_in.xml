@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <import type="android.view.View"/>
-    </data>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SignInActivity">
+    <LinearLayout
+        android:id="@+id/layoutSignIn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".SignInActivity">
-
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp" />
-
-    </RelativeLayout>
-</layout>
+            android:text="Sign in as:" />
+        <Spinner
+            android:id="@+id/spinnerUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tooltipText="User"/>
+        <Button
+            android:id="@+id/buttonSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="Sign in"/>
+    </LinearLayout>
+</RelativeLayout>
