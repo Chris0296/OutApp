@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.model.User;
+import com.example.chris.outapp.view.MainActivity;
 
 public class FriendDetailFragment extends Fragment {
     private TextView textViewFriendName;
@@ -28,6 +29,9 @@ public class FriendDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_friend_detail, container, false);
+
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(true);
+
         textViewFriendName = fragmentView.findViewById(R.id.textViewFriendName);
         User friend = (User) getArguments().getSerializable("friend");
         textViewFriendName.setText(friend.getUserName());

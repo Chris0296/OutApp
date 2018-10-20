@@ -22,6 +22,7 @@ import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.OutGoerRecyclerAdapter;
 import com.example.chris.outapp.model.adapter.UserAdapter;
+import com.example.chris.outapp.view.MainActivity;
 import com.example.chris.outapp.view.OnItemClickListener;
 import com.example.chris.outapp.viewmodel.OutGoerViewModel;
 import com.example.chris.outapp.viewmodel.UserViewModel;
@@ -50,6 +51,10 @@ public class FeedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_feed, container, false);
+
+        ((MainActivity) getActivity()).setActionBarTitle(R.string.feed);
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(false);
+
         spinnerUserIAm = fragmentView.findViewById(R.id.spinnerUserIAm);
         recyclerViewOutGoers = fragmentView.findViewById(R.id.recyclerViewOutGoers);
         recyclerViewOutGoers.setHasFixedSize(true);

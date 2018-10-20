@@ -21,6 +21,7 @@ import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.VenueRecyclerAdapter;
+import com.example.chris.outapp.view.MainActivity;
 import com.example.chris.outapp.view.OnItemClickListener;
 import com.example.chris.outapp.viewmodel.VenueViewModel;
 
@@ -44,6 +45,10 @@ public class VenueFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_venue, container, false);
+
+        ((MainActivity) getActivity()).setActionBarTitle(R.string.venues);
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(false);
+
         venueViewModel = ViewModelProviders.of(this).get(VenueViewModel.class);
         recyclerViewVenues = fragmentView.findViewById(R.id.recyclerVenues);
         recyclerViewVenues.setHasFixedSize(true);

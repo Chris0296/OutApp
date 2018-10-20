@@ -24,6 +24,7 @@ import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.FriendRecyclerAdapter;
 import com.example.chris.outapp.model.adapter.UserAdapter;
+import com.example.chris.outapp.view.MainActivity;
 import com.example.chris.outapp.view.OnItemClickListener;
 import com.example.chris.outapp.viewmodel.UserViewModel;
 
@@ -50,6 +51,10 @@ public class FriendFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_friend, container, false);
+
+        ((MainActivity) getActivity()).setActionBarTitle(R.string.friends);
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(false);
+
         spinnerCurrentUser = fragmentView.findViewById(R.id.spinnerCurrentUser);
         recyclerViewFriends = fragmentView.findViewById(R.id.recyclerFriends);
         recyclerViewFriends.setHasFixedSize(true);
