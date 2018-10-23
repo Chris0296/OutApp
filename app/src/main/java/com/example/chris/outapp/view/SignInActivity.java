@@ -69,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
                     MainApplication.setCurrentUser(selectedUser);
                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

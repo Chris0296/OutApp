@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity{
                         break;
                 }
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 fragmentTransaction.replace(frameLayoutContainer.getId(), selectedFragment);
                 fragmentTransaction.commit();
                 return true;
