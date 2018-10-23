@@ -6,6 +6,8 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +19,16 @@ import android.widget.TextView;
 
 import com.example.chris.outapp.MainApplication;
 import com.example.chris.outapp.R;
+import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
+import com.example.chris.outapp.model.Venue;
+import com.example.chris.outapp.model.adapter.ProfileDestinationRecyclerAdapter;
 import com.example.chris.outapp.model.adapter.UserAdapter;
 import com.example.chris.outapp.view.MainActivity;
+import com.example.chris.outapp.view.OnItemClickListener;
 import com.example.chris.outapp.viewmodel.OutGoerViewModel;
 import com.example.chris.outapp.viewmodel.UserViewModel;
+import com.example.chris.outapp.viewmodel.VenueViewModel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,11 +37,13 @@ import java.util.Map;
 public class ProfileFragment extends Fragment {
 
     private EditText editTextNewName;
-    private TextView textViewNumDestinations;
-    private TextView textViewNumFriends;
+    private RecyclerView recyclerViewDestinations;
+    private RecyclerView.Adapter recyclerAdapter;
+    private RecyclerView.LayoutManager recyclerLayoutManager;
     private Button buttonUpdate;
 
     private UserViewModel userViewModel;
+    private VenueViewModel venueViewModel;
     private OutGoerViewModel outGoerViewModel;
 
     public ProfileFragment() {
@@ -58,16 +67,38 @@ public class ProfileFragment extends Fragment {
         ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(false);
 
         editTextNewName = fragmentView.findViewById(R.id.editTextNewName);
-        textViewNumDestinations = fragmentView.findViewById(R.id.textViewNumDestinations);
-        textViewNumFriends = fragmentView.findViewById(R.id.textViewNumFriends);
+        recyclerViewDestinations = fragmentView.findViewById(R.id.recyclerDestinations);
+        recyclerViewDestinations.setHasFixedSize(true);
         buttonUpdate = fragmentView.findViewById(R.id.buttonUpdate);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        venueViewModel = ViewModelProviders.of(this).get(VenueViewModel.class);
         outGoerViewModel = ViewModelProviders.of(this).get(OutGoerViewModel.class);
 
         editTextNewName.setText(MainApplication.getCurrentUser().getUserName());
-        textViewNumDestinations.setText(MainApplication.getCurrentUser().getDestinations().size() + " Destinations");
-        textViewNumFriends.setText(MainApplication.getCurrentUser().getFriends().size() + " Friends");
+
+        if(venueViewModel != null){
+            LiveData<List<Venue>>destinationVenues = venueViewModel.getDestinationVenueLiveData();
+            destinationVenues.observe(this, new Observer<List<Venue>>() {
+                @Override
+                public void onChanged(@Nullable List<Venue> destinations) {
+                    recyclerLayoutManager = new LinearLayoutManager(getContext());
+                    recyclerViewDestinations.setLayoutManager(recyclerLayoutManager);
+                    recyclerAdapter = new ProfileDestinationRecyclerAdapter(getContext(), destinations, new OnItemClickListener() {
+                        @Override
+                        public void onItemClick(Venue venue) {
+                        }
+                        @Override
+                        public void onItemClick(User friend) {
+                        }
+                        @Override
+                        public void onItemClick(OutGoer outGoer) {
+                        }
+                    });
+                    recyclerViewDestinations.setAdapter(recyclerAdapter);
+                }
+            });
+        }
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
