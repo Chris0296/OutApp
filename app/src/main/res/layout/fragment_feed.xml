@@ -4,32 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragment.FeedFragment">
-    <LinearLayout
-        android:id="@+id/layoutInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User I Am:"/>
-        <Spinner
-            android:id="@+id/spinnerUserIAm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <View
-        android:id="@+id/viewDivider"
-        android:layout_below="@+id/layoutInput"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?colorAccent"
-        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewOutGoers"
-        android:layout_below="@+id/viewDivider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"/>

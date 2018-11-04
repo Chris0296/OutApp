@@ -1,44 +1,28 @@
 package com.example.chris.outapp.view;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Spinner;
 
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
-import com.example.chris.outapp.model.adapter.UserAdapter;
-import com.example.chris.outapp.model.adapter.VenueAdapter;
 import com.example.chris.outapp.view.fragment.FeedFragment;
 import com.example.chris.outapp.view.fragment.FriendFragment;
 import com.example.chris.outapp.view.fragment.GoingOutFragment;
-import com.example.chris.outapp.view.fragment.UpdateFragment;
+import com.example.chris.outapp.view.fragment.ProfileFragment;
 import com.example.chris.outapp.view.fragment.VenueFragment;
-import com.example.chris.outapp.viewmodel.OutGoerViewModel;
 import com.example.chris.outapp.viewmodel.UserViewModel;
 import com.example.chris.outapp.viewmodel.VenueViewModel;
-import com.facebook.AccessToken;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -83,11 +67,12 @@ public class MainActivity extends AppCompatActivity{
                     case R.id.goingOutTab :
                         selectedFragment = GoingOutFragment.newInstance();
                         break;
-                    case R.id.updateTab :
-                        selectedFragment = UpdateFragment.newInstance();
+                    case R.id.profileTab :
+                        selectedFragment = ProfileFragment.newInstance();
                         break;
                 }
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 fragmentTransaction.replace(frameLayoutContainer.getId(), selectedFragment);
                 fragmentTransaction.commit();
                 return true;
