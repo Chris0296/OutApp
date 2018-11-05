@@ -15,12 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.chris.outapp.MainApplication;
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.Utils;
 import com.example.chris.outapp.model.OutGoer;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.Venue;
 import com.example.chris.outapp.model.adapter.VenueRecyclerAdapter;
+import com.example.chris.outapp.view.MainActivity;
 import com.example.chris.outapp.view.OnItemClickListener;
 import com.example.chris.outapp.viewmodel.VenueViewModel;
 
@@ -44,6 +46,10 @@ public class VenueFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_venue, container, false);
+
+        ((MainActivity) getActivity()).setActionBarTitle(R.string.venues);
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(false);
+
         venueViewModel = ViewModelProviders.of(this).get(VenueViewModel.class);
         recyclerViewVenues = fragmentView.findViewById(R.id.recyclerVenues);
         recyclerViewVenues.setHasFixedSize(true);
@@ -52,7 +58,7 @@ public class VenueFragment extends Fragment {
             venueLiveData.observe(VenueFragment.this, new Observer<List<Venue>>() {
                 @Override
                 public void onChanged(@Nullable List<Venue> venues) {
-                    venues = Utils.sortVenuesByAttendees(venues);
+                    venues = Utils.sortVenuesByAttendees(venues, MainApplication.getCurrentUser());
                     recyclerManager = new LinearLayoutManager(getContext());
                     recyclerViewVenues.setLayoutManager(recyclerManager);
                     recyclerAdapter = new VenueRecyclerAdapter(getContext(), venues, new OnItemClickListener() {

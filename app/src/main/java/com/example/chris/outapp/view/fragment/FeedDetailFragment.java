@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.model.OutGoer;
+import com.example.chris.outapp.view.MainActivity;
 
 public class FeedDetailFragment extends Fragment {
     private TextView textViewDetails;
@@ -28,6 +29,9 @@ public class FeedDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView  = inflater.inflate(R.layout.fragment_feed_detail, container, false);
+
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(true);
+
         textViewDetails = fragmentView.findViewById(R.id.textViewDetails);
         OutGoer outGoer = (OutGoer) getArguments().getSerializable("outGoer");
         textViewDetails.setText(outGoer.getUserName() + " is going to " + outGoer.getVenueName());

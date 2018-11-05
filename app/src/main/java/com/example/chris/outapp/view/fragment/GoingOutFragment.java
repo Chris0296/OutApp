@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import com.example.chris.outapp.R;
 import com.example.chris.outapp.model.User;
 import com.example.chris.outapp.model.adapter.UserAdapter;
+import com.example.chris.outapp.view.MainActivity;
 import com.example.chris.outapp.viewmodel.OutGoerViewModel;
 import com.example.chris.outapp.viewmodel.UserViewModel;
 import com.example.chris.outapp.viewmodel.VenueViewModel;
@@ -48,6 +49,10 @@ public class GoingOutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_going_out, container, false);
+
+        ((MainActivity) getActivity()).setActionBarTitle(R.string.going_out);
+        ((MainActivity) getActivity()).setDisplayHomeAsUpEnabled(false);
+
         spinnerUser1 = fragmentView.findViewById(R.id.spinnerUser1);
         spinnerUser2 = fragmentView.findViewById(R.id.spinnerUser2);
         buttonAdd = fragmentView.findViewById(R.id.buttonAdd);

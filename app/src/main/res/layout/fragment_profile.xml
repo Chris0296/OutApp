@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.SignInActivity">
+    tools:context=".view.fragment.ProfileFragment">
     <LinearLayout
-        android:id="@+id/layoutSignIn"
+        android:id="@+id/layoutEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="20dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign in as:" />
-        <Spinner
-            android:id="@+id/spinnerUsers"
+            android:text="New Name:"/>
+
+        <EditText
+            android:id="@+id/editTextNewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerDestinations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tooltipText="User"/>
+            android:scrollbars="vertical"/>
+
         <Button
-            android:id="@+id/buttonSignIn"
-            android:layout_width="wrap_content"
+            android:layout_below="@id/layoutEdit"
+            android:id="@+id/buttonUpdate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="Sign in"/>
+            android:text="Update Name"/>
+
     </LinearLayout>
 </RelativeLayout>
